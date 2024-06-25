@@ -1,8 +1,10 @@
 import { useForm } from "react-hook-form";
 import './LoginForm.css';
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function SignupForm() {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -10,7 +12,17 @@ export default function SignupForm() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    try{
+      const response = axios.post('http://localhost:3000/users',data)
+      console.log(response);
+      navigate('/login')
+    }
+    catch(error){
+      console.log(error);
+    }
+    
+  };
 
   return (
     <div className="lg:w-96 px-5 card ">
