@@ -1,7 +1,11 @@
 import { useForm } from "react-hook-form";
 import './LoginForm.css';
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function LoginForm() {
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -9,7 +13,29 @@ export default function LoginForm() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async(data) => {
+    try{
+      const response = await axios.post('http://localhost:3000/auth/login',data,{withCredentials:true})
+      console.log(response);
+      navigate('/success')
+    }
+    catch(error){
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    const verifyUser = async()=>{
+        try{
+          const response = await axios.get('http://localhost:3000/auth/verify',{withCredentials:true})
+          const loggedIn = response.data.verified
+          console.log(loggedIn);
+        }
+        catch(error){
+          console.log(error)
+        }
+    }
+    verifyUser()
+  }, [navigate])
 
   return (
     <div className="lg:w-96 px-5 card ">

@@ -9,6 +9,7 @@ import ErrorPage from './errorPage';
 import Root from './routes/root';
 import Login from './pages/login';
 import SignupForm from './components/signupForm';
+import Success from './pages/success';
 
 
 const router = createBrowserRouter([
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login/>,
+      },
+      {
+        path: "/success",
+        element: <Success/>,
       },
     ],
   },
