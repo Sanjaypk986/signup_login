@@ -1,0 +1,10 @@
+span{
+    color: red;
+}
+
+.card{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 20px;
+    background-color: rgba(162, 0, 83, 0.6);
+    
+}
