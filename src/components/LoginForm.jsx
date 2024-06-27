@@ -15,7 +15,7 @@ export default function LoginForm() {
 
   const onSubmit = async(data) => {
     try{
-      const response = await axios.post('http://localhost:3000/auth/login',data,{withCredentials:true})
+      const response = await axios.post(`${import.meta.env.VITE_BASE_API}/auth/login`,data,{withCredentials:true})
       console.log(response);
       navigate('/success')
     }
@@ -26,7 +26,7 @@ export default function LoginForm() {
   useEffect(() => {
     const verifyUser = async()=>{
         try{
-          const response = await axios.get('http://localhost:3000/auth/verify',{withCredentials:true})
+          const response = await axios.get(`${import.meta.env.VITE_BASE_API}/auth/verify`,{withCredentials:true})
           const loggedIn = response.data.verified
           console.log(loggedIn);
         }

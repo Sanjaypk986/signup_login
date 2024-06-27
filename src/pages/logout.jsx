@@ -9,7 +9,7 @@ const Logout = () => {
      
         const loggingOut = async()=>{
            try{
-            const response = await axios('http://localhost:3000/auth/logout' ,{withCredentials:true})
+            const response = await axios(`${import.meta.env.VITE_BASE_API}/auth/logout` ,{withCredentials:true})
             navigate('/')
            }
            catch(error){
