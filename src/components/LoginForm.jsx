@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import './LoginForm.css';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 export default function LoginForm() {
   const navigate = useNavigate()
@@ -23,19 +22,7 @@ export default function LoginForm() {
       console.log(error);
     }
   };
-  useEffect(() => {
-    const verifyUser = async()=>{
-        try{
-          const response = await axios.get(`${import.meta.env.VITE_BASE_API}/auth/verify`,{withCredentials:true})
-          const loggedIn = response.data.verified
-          console.log(loggedIn);
-        }
-        catch(error){
-          console.log(error)
-        }
-    }
-    verifyUser()
-  }, [navigate])
+  
 
   return (
     <div className="lg:w-96 px-5 card ">
